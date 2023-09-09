@@ -1,0 +1,147 @@
+@import "../../styles/styles.scss";
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 9%;
+    background: $bgColor;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    transition: .3s;
+
+    .logo {
+        position: relative;
+        font-size: 2.5rem;
+        color: $textColor;
+        font-weight: 600;
+
+        .animate {
+            @extend %animation;
+            animation: showRight 1s ease forwards;
+            animation-delay: calc(.3s * var(--i));
+        }
+    }
+
+    .menuIcon {
+        position: relative;
+        font-size: 3.6rem;
+        color: $textColor;
+        cursor: pointer;
+        display: none;
+
+        .animate {
+            @extend %animation;
+            animation: showRight 1s ease forwards;
+            animation-delay: calc(.3s * var(--i));
+        }
+    }
+
+    .navbar {
+        position: relative;
+        display: flex;
+        list-style-type: none;
+
+
+        .link {
+            font-size: 1.7rem;
+            color: $textColor;
+            font-weight: 500;
+            margin-left: 3.5rem;
+            transition: .3s;
+            cursor: pointer;
+
+            &:hover {
+                color: $mainColor;
+            }
+        }
+
+        .active {
+            color: $mainColor;
+        }
+
+        .animate {
+            @extend %animation;
+            animation: showRight 1s ease forwards;
+            animation-delay: calc(.3s * var(--i));
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .header {
+        padding: 2rem 4%;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        background: $bgColor;
+
+        .logo {
+            width: 100%;
+        }
+
+        .menuIcon {
+            display: flex;
+            justify-content: flex-end
+        }
+
+        .navbar {
+            display: block;
+            position: absolute;
+            top: 100%;
+            left: -100%;
+            width: 100%;
+            padding: 1rem 4%;
+            background: $mainColor;
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+            z-index: 1;
+            transition: .25s ease;
+            transition-delay: .25s;
+
+            li {
+
+                .link {
+                    display: block;
+                    font-size: 2rem;
+                    margin: 3rem 0;
+                    transform: translateX(-20rem);
+                    transition: .25s ease;
+                    transition-delay: 0;
+                }
+            }
+
+            .activeNav {
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: $bgColor;
+                border-top: .1rem solid rgba(0, 0, 0, .2);
+                z-index: -1;
+                transition: .25s ease;
+                transition-delay: 0s;
+            }
+        }
+
+        .navbar.toogle {
+            left: 0;
+            transition-delay: 0s;
+
+            .link {
+                transform: translateX(0);
+                transition-delay: .25s;
+            }
+
+            .activeNav {
+                left: 0;
+                transition-delay: .25s;
+            }
+        }
+    }
+}

@@ -1,0 +1,175 @@
+@import "../../styles/styles.scss";
+
+.contact {
+    padding: 5rem 9% 2rem;
+    min-height: auto;
+
+    .heading {
+        position: relative;
+        font-size: 5rem;
+        margin-bottom: 3rem;
+        text-align: center;
+
+        .animate {
+            @extend %animation;
+            transition: 1s ease;
+            transition-delay: calc(.3s / var(--i));
+        }
+
+        .animate.showAnimate {
+            transition-delay: calc(.3s / var(--i));
+            width: 0;
+        }
+
+        span {
+            color: $mainColor;
+        }
+    }
+
+    form {
+        max-width: 70rem;
+        margin: 0 auto;
+        text-align: center;
+
+        .inputBox {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            .inputField {
+                position: relative;
+                width: 49%;
+                margin: 0.8rem 0;
+
+                .animate {
+                    @extend %animation;
+                    transition: 1s ease;
+                    transition-delay: calc(.3s / var(--i));
+                }
+
+                .animate.showAnimate {
+                    transition-delay: calc(.3s / var(--i));
+                    width: 0;
+                }
+
+                .focus {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 0;
+                    height: 100%;
+                    background: $secondBgColor;
+                    border-radius: .6rem;
+                    z-index: -1;
+                    transition: .5s;
+                }
+
+                input {
+                    width: 100%;
+                    height: 100%;
+                    padding: 1.5rem;
+                    font-size: 1.6rem;
+                    color: $textColor;
+                    background: transparent;
+                    border-radius: .6rem;
+                    border: .2rem solid $mainColor;
+
+                    &::placeholder {
+                        color: $textColor;
+                    }
+
+                    &:focus~.focus,
+                    &:valid~.focus {
+                        width: 100%;
+                    }
+                }
+
+                input[type=number]::-webkit-inner-spin-button,
+                input[type=number]::-webkit-outer-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+
+
+            }
+        }
+
+        .textareaField {
+            position: relative;
+            margin: 0.8rem 0;
+
+            .animate {
+                @extend %animation;
+                transition: 1s ease;
+                transition-delay: calc(.3s / var(--i));
+            }
+
+            .animate.showAnimate {
+                transition-delay: calc(.3s / var(--i));
+                width: 0;
+            }
+
+            .focus {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 100%;
+                background: $secondBgColor;
+                border-radius: .6rem;
+                z-index: -1;
+                transition: .5s;
+            }
+
+            textarea {
+                width: 100%;
+                height: 100%;
+                padding: 1.5rem;
+                font-size: 1.6rem;
+                color: $textColor;
+                background: transparent;
+                border-radius: .6rem;
+                border: .2rem solid $mainColor;
+
+                &::placeholder {
+                    color: $textColor;
+                }
+
+                &:focus~.focus,
+                &:valid~.focus {
+                    width: 100%;
+                }
+            }
+        }
+
+        .btnBox {
+            position: relative;
+            display: inline-block;
+            justify-content: space-between;
+            width: 15rem;
+            height: 5rem;
+
+            .animate {
+                @extend %animation;
+                transition: 1s ease;
+                transition-delay: calc(.3s / var(--i));
+            }
+
+            .animate.showAnimate {
+                transition-delay: calc(.3s / var(--i));
+                width: 0;
+            }
+        }
+    }
+
+    .submited {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 462px) {
+    .contact form .inputBox .inputField {
+        width: 100%;
+    }
+}

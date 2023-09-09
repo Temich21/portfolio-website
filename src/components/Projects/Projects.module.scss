@@ -1,0 +1,79 @@
+@import "../../styles/styles.scss";
+
+.projects {
+    position: relative;
+    padding: 0 9% 6rem;
+
+    .title {
+        position: relative;
+        font-size: 2.5rem;
+        margin: 0 0 1.5rem 2rem;
+
+        .animate {
+            @extend %animation;
+            transition: 1s ease;
+            transition-delay: calc(.3s / var(--i));
+        }
+
+        .animate.showAnimate {
+            transition-delay: calc(.3s / var(--i));
+            width: 0;
+        }
+    }
+
+    .buttons {
+        position: absolute;
+        padding-right: 9%;
+        right: 0.7rem;
+        display: flex;
+        gap: 5rem;
+
+        @media (max-width: 530px) {
+            display: none;
+        }
+
+        .arrow {
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            z-index: 1;
+            overflow: hidden;
+            color: $mainColor;
+
+            // &:hover {
+            //     color: $bgColor;
+            // }
+
+            // &::before {
+            //     content: '';
+            //     position: absolute;
+            //     top: 0;
+            //     left: 0;
+            //     width: 0;
+            //     height: 100%;
+            //     background: $mainColor;
+            //     z-index: -1;
+            //     transition: .5s;
+            // }
+
+            // &:hover::before {
+            //     width: 100%;
+            // }
+        }
+    }
+
+    .animate {
+        @extend %animation;
+        transition: 1s ease;
+        transition-delay: calc(.3s / var(--i));
+    }
+
+    .animate.showAnimate {
+        transition-delay: calc(.3s / var(--i));
+        width: 0;
+    }
+}

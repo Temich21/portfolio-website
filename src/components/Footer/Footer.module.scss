@@ -1,0 +1,103 @@
+@import "../../styles/styles.scss";
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2rem 9%;
+    background-color: $secondBgColor;
+
+    .footerText {
+        position: relative;
+
+        p {
+            font-size: 1.6rem;
+        }
+
+        .animate {
+            @extend %animation;
+            transition: 1s ease;
+            transition-delay: calc(.3s / var(--i));
+            background: $secondBgColor;
+        }
+
+        .animate.showAnimate {
+            transition-delay: calc(.3s / var(--i));
+            width: 0;
+        }
+    }
+
+    .footerIconTop {
+        position: relative;
+        border-radius: .6rem;
+
+        .animate {
+            @extend %animation;
+            transition: 1s ease;
+            transition-delay: calc(.3s / var(--i));
+            background: $secondBgColor;
+        }
+
+        .animate.showAnimate {
+            transition-delay: calc(.3s / var(--i));
+            width: 0;
+        }
+
+        .icon {
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.8rem;
+            background: $mainColor;
+            border: .2rem solid $mainColor;
+            border-radius: .6rem;
+            z-index: 1;
+            overflow: hidden;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 100%;
+                background: $secondBgColor;
+                z-index: -1;
+                transition: .5s;
+            }
+
+            &:hover::before {
+                width: 100%;
+            }
+        }
+
+        .arrow {
+            font-size: 2.4rem;
+            color: $bgColor;
+            transition: .5s;
+
+            &:hover {
+                color: $mainColor;
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .footer {
+        padding: 2rem 4%;
+    }
+}
+
+@media (max-width: 462px) {
+    .footer {
+        flex-direction: column-reverse;
+
+        p {
+            margin-top: 2rem;
+            text-align: center;
+        }
+    }
+}
