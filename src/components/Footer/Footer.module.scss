@@ -17,6 +17,7 @@
 
         .animate {
             @extend %animation;
+            --i: 1;
             transition: 1s ease;
             transition-delay: calc(.3s / var(--i));
             background: $secondBgColor;
@@ -34,6 +35,7 @@
 
         .animate {
             @extend %animation;
+            --i: 2;
             transition: 1s ease;
             transition-delay: calc(.3s / var(--i));
             background: $secondBgColor;

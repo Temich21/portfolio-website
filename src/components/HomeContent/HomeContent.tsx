@@ -1,5 +1,4 @@
 import styles from './HomeContent.module.scss'
-
 import { FontAwesomeIcon } from '../../../node_modules/@fortawesome/react-fontawesome/index'
 import { faFacebookF, faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faCode } from '@fortawesome/free-solid-svg-icons'
@@ -13,17 +12,17 @@ export const HomeContent: React.FC = () => {
     return (
         <section className={styles.home} id="home">
             <div className={styles.homeContent}>
-                <h1>Hi, I'm <span>Artem Rakhmatullin</span><span className={`${styles.animate} ${activePath === 'home' ? styles.showAnimate : ''}`} style={{ '--i': 2 }}></span></h1>
+                <h1>Hi, I&rsquo;m <span>Artem Rakhmatullin</span><span className={`${styles.animate} ${activePath === 'home' ? styles.showAnimate : ''}`} ></span></h1>
                 <div className={styles.textAnimate}>
                     <h3 className={`${styles.animate} ${activePath === 'home' ? styles.showAnimate : ''}`}>Frontend Developer</h3>
-                    <span className={`${styles.animate} ${activePath === 'home' ? styles.showAnimate : ''}`} style={{ '--i': 3 }}></span>
+                    <span className={`${styles.animate} ${activePath === 'home' ? styles.showAnimate : ''}`} ></span>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Duis pulvinar. Ut tempus purus at lorem. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Nunc dapibus tortor vel mi dapibus sollicitudin. Maecenas aliquet accumsan leo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<span className={`${styles.animate} ${activePath === 'home' ? styles.showAnimate : ''}`} style={{ '--i': 4 }}></span></p>
-                <div className={styles.btnBox}>
+                <p>A mechanical designer with a newfound passion for frontend development. Feel free to explore my journey, including education, work, projects, and thesis, along with my acquired skills. Don&rsquo;t hesitate to reach out via the contact section. Let&rsquo;s collaborate and create something amazing together.<span className={`${styles.animate} ${activePath === 'home' ? styles.showAnimate : ''}`} ></span></p>
+                {/* <div className={styles.btnBox}>
                     <Button>Hire Me</Button>
                     <Button>Let's Talk</Button>
                     <span className={`${styles.animate} ${activePath === 'home' ? styles.showAnimate : ''}`} style={{ '--i': 5 }}></span>
-                </div>
+                </div> */}
             </div>
             <div className={styles.homeSci}>
                 <div className={styles.circle}>
@@ -49,10 +48,10 @@ export const HomeContent: React.FC = () => {
                         <FontAwesomeIcon icon={faCode} />
                     </a>
                 </div>
-                <span className={`${styles.animate} ${activePath === 'home' ? styles.showAnimate : ''}`} style={{ '--i': 6 }}></span>
+                <span className={`${styles.animate} ${activePath === 'home' ? styles.showAnimate : ''}`} ></span>
             </div>
             <div className={`${styles.homeImgHover}  ${styles.homeImg}`}></div>
-            <span className={`${styles.animate} ${activePath === 'home' ? styles.showAnimate : ''}`} style={{ '--i': 7 }}></span>
+            <span className={`${styles.animate} ${activePath === 'home' ? styles.showAnimate : ''}`} ></span>
         </section>
     )
 }

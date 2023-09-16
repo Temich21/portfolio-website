@@ -21,6 +21,7 @@
 
         .animate {
             @extend %animation;
+            --i: 1;
             animation: showRight 1s ease forwards;
             animation-delay: calc(.3s * var(--i));
         }
@@ -35,6 +36,7 @@
 
         .animate {
             @extend %animation;
+            --i: 2;
             animation: showRight 1s ease forwards;
             animation-delay: calc(.3s * var(--i));
         }
@@ -65,6 +67,7 @@
 
         .animate {
             @extend %animation;
+            --i: 2;
             animation: showRight 1s ease forwards;
             animation-delay: calc(.3s * var(--i));
         }

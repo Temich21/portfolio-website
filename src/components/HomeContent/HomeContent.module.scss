@@ -22,6 +22,7 @@
             }
 
             .animate.showAnimate {
+                --i: 2;
                 animation: showRight 1s ease forwards;
                 animation-delay: calc(.3s * var(--i));
             }
@@ -80,6 +81,7 @@
             }
 
             span.animate.showAnimate {
+                --i: 3;
                 animation: showRight 1s ease forwards;
                 animation-delay: calc(.3s * var(--i));
             }
@@ -92,9 +94,11 @@
 
             .animate {
                 @extend %animation;
+                width: 105%;
             }
 
             .animate.showAnimate {
+                --i: 4;
                 animation: showRight 1s ease forwards;
                 animation-delay: calc(.3s * var(--i));
             }
@@ -112,6 +116,7 @@
             }
 
             .animate.showAnimate {
+                --i: 5;
                 animation: showRight 1s ease forwards;
                 animation-delay: calc(.3s * var(--i));
             }
@@ -177,6 +182,7 @@
         }
 
         .animate.showAnimate {
+            --i: 5;
             animation: showRight 1s ease forwards;
             animation-delay: calc(.3s * var(--i));
         }

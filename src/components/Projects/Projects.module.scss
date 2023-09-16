@@ -43,36 +43,18 @@
             z-index: 1;
             overflow: hidden;
             color: $mainColor;
-
-            // &:hover {
-            //     color: $bgColor;
-            // }
-
-            // &::before {
-            //     content: '';
-            //     position: absolute;
-            //     top: 0;
-            //     left: 0;
-            //     width: 0;
-            //     height: 100%;
-            //     background: $mainColor;
-            //     z-index: -1;
-            //     transition: .5s;
-            // }
-
-            // &:hover::before {
-            //     width: 100%;
-            // }
         }
     }
 
     .animate {
         @extend %animation;
+        --i: 10;
         transition: 1s ease;
         transition-delay: calc(.3s / var(--i));
     }
 
     .animate.showAnimate {
+        --i: 10;
         transition-delay: calc(.3s / var(--i));
         width: 0;
     }

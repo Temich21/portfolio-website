@@ -2,8 +2,12 @@
 
 .skills {
     min-height: auto;
-    padding: 5rem 9% 5rem;
+    padding: 5rem 9% 10rem;
     background: $secondBgColor;
+
+    @media (max-width: 462px) {
+        padding-bottom: 5rem;
+    }
 
     .heading {
         position: relative;
@@ -13,6 +17,7 @@
 
         .animate {
             @extend %animation;
+            --i: 1;
             transition: 1s ease;
             transition-delay: calc(.3s / var(--i));
             background: $secondBgColor;
@@ -28,97 +33,82 @@
         }
     }
 
-    .skillsRow {
-        display: flex;
-        flex-wrap: wrap;
+    .skillsTable {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(3, 31%);
+        grid-template-rows: 45% 52%;
         gap: 5rem;
 
-        .skillsColumn {
-            flex: 1 1 40rem;
+        @media (max-width: 620px) {
+            display: flex;
+            flex-direction: column;
+        }
 
-            .title {
-                position: relative;
+        @media (max-width: 991px) {
+            grid-template-columns: repeat(2, 50%);
+            grid-template-rows: 27% 36% 30%;
+        }
+
+        .skill {
+            position: relative;
+            border-radius: .6rem;
+            padding: .5rem 1.5rem;
+            z-index: 1;
+            overflow: hidden;
+
+            h3 {
                 font-size: 2.5rem;
-                margin: 0 0 1.5rem;
+            }
 
-                .animate {
-                    @extend %animation;
-                    transition: 1s ease;
-                    transition-delay: calc(.3s / var(--i));
-                    background: $secondBgColor;
-                }
+            .iconBox {
+                display: flex;
+                justify-content: center;
+                margin: 1rem;
 
-                .animate.showAnimate {
-                    transition-delay: calc(.3s / var(--i));
-                    width: 0;
+                .icon {
+                    width: 70px;
+                    height: 70px;
                 }
             }
 
-            .skillsBox {
-                position: relative;
-
-                .animate {
-                    @extend %animation;
-                    transition: 1s ease;
-                    transition-delay: calc(.3s / var(--i));
-                    background: $secondBgColor;
-                }
-
-                .animate.showAnimate {
-                    transition-delay: calc(.3s / var(--i));
-                    width: 0;
-                }
-
-                .skillsContent {
-                    position: relative;
-                    border: .2rem solid $mainColor;
-                    border-radius: .6rem;
-                    padding: .5rem 1.5rem;
-                    z-index: 1;
-                    overflow: hidden;
-
-                    .progress {
-                        padding: 1rem 0;
-
-                        h3 {
-                            font-size: 1.7rem;
-                            display: flex;
-                            justify-content: space-between;
-                        }
-
-                        .bar {
-                            height: 2.5rem;
-                            border-radius: .6rem;
-                            border: .2rem solid $mainColor;
-                            padding: .5rem;
-                            margin: 1rem 0;
-
-                            span {
-                                display: block;
-                                height: 100%;
-                                border-radius: .3rem;
-                                background: $mainColor;
-                            }
-                        }
-                    }
-
-                    &::before {
-                        content: '';
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 0;
-                        height: 100%;
-                        background: $bgColor;
-                        z-index: -1;
-                        transition: .5s;
-                    }
-
-                    &:hover::before {
-                        width: 100%;
-                    }
-                }
+            p {
+                font-size: 1.6rem;
             }
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 100%;
+                background: $bgColor;
+                z-index: -1;
+                transition: .5s;
+            }
+
+            &:hover::before {
+                width: 100%;
+            }
+
+            .animate {
+                @extend %animation;
+                --i: 2;
+                transition: 1s ease;
+                transition-delay: calc(.3s / var(--i));
+                background: $secondBgColor;
+            }
+
+            .animate.showAnimate {
+                transition-delay: calc(.3s / var(--i));
+                width: 0;
+            }
+        }
+
+        .skill.showAnimate {
+            border: .2rem solid $mainColor;
+            transition: 1s ease;
         }
     }
 }

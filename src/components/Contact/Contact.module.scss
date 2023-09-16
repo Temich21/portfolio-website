@@ -12,6 +12,7 @@
 
         .animate {
             @extend %animation;
+            --i: 1;
             transition: 1s ease;
             transition-delay: calc(.3s / var(--i));
         }
@@ -42,15 +43,29 @@
                 width: 49%;
                 margin: 0.8rem 0;
 
-                .animate {
-                    @extend %animation;
-                    transition: 1s ease;
-                    transition-delay: calc(.3s / var(--i));
-                }
+                // .animate {
+                //     @extend %animation;
+                //     transition: 1s ease;
+                //     transition-delay: calc(.3s / var(--i));
+                // }
 
-                .animate.showAnimate {
-                    transition-delay: calc(.3s / var(--i));
-                    width: 0;
+                // .animate.showAnimate {
+                //     transition-delay: calc(.3s / var(--i));
+                //     width: 0;
+                // }
+
+                @for $i from 2 through 5 {
+                    .animate:nth-child(#{$i}) {
+                        @extend %animation;
+                        --i: #{$i};
+                        transition: 1s ease;
+                        transition-delay: calc(.3s * var(--i));
+                    }
+
+                    .animate.showAnimate {
+                        transition-delay: calc(.3s / var(--i));
+                        width: 0;
+                    }
                 }
 
                 .focus {
@@ -101,6 +116,7 @@
 
             .animate {
                 @extend %animation;
+                --i: 6;
                 transition: 1s ease;
                 transition-delay: calc(.3s / var(--i));
             }
@@ -152,6 +168,7 @@
 
             .animate {
                 @extend %animation;
+                --i: 7;
                 transition: 1s ease;
                 transition-delay: calc(.3s / var(--i));
             }

@@ -1,25 +1,63 @@
 import styles from './Projects.module.scss'
 import Slider from "react-slick"
+import RefObject from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import { FontAwesomeIcon } from '../../../node_modules/@fortawesome/react-fontawesome/index'
-import { faCalendarDays, faCircleArrowRight, faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons/index'
-import { useContext, useRef, useState } from 'react'
+import { faCircleArrowRight, faCircleArrowLeft } from '../../../node_modules/@fortawesome/free-solid-svg-icons/index'
+import { useContext, useRef } from 'react'
 import styled from 'styled-components'
 import { ActivePathContext } from '@/context/ActivePath'
+import { IProjects } from '@/models/IProjects'
 
-const projects = [
-    { id: 1, title: "Portfolio Website", description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Duis pulvinar. Ut tempus purus at lorem. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Nunc dapibus tortor vel mi dapibus sollicitudin. Maecenas aliquet accumsan leo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' },
-    { id: 2, title: "D&D Generator", description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Duis pulvinar. Ut tempus purus at lorem. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Nunc dapibus tortor vel mi dapibus sollicitudin. Maecenas aliquet accumsan leo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' },
-    { id: 3, title: "Brno table games", description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Duis pulvinar. Ut tempus purus at lorem. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Nunc dapibus tortor vel mi dapibus sollicitudin. Maecenas aliquet accumsan leo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' },
-    { id: 4, title: "Data Analysis and Visualization in Python", description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Duis pulvinar. Ut tempus purus at lorem. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Nunc dapibus tortor vel mi dapibus sollicitudin. Maecenas aliquet accumsan leo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' },
-    { id: 5, title: "Telegram ChatGPT bot", description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Duis pulvinar. Ut tempus purus at lorem. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Nunc dapibus tortor vel mi dapibus sollicitudin. Maecenas aliquet accumsan leo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' },
-    { id: 6, title: "Alien Invasion", description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Duis pulvinar. Ut tempus purus at lorem. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Nunc dapibus tortor vel mi dapibus sollicitudin. Maecenas aliquet accumsan leo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' },
+const projects: IProjects[] = [
+    {
+        id: 1,
+        title: "Portfolio Website",
+        description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Duis pulvinar. Ut tempus purus at lorem. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Nunc dapibus tortor vel mi dapibus sollicitudin. Maecenas aliquet accumsan leo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        link: 'https://github.com/Temich21/portfolio-website'
+    },
+    {
+        id: 2,
+        title: "D&D Generator",
+        description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Duis pulvinar. Ut tempus purus at lorem. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Nunc dapibus tortor vel mi dapibus sollicitudin. Maecenas aliquet accumsan leo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        link: 'https://github.com/Temich21/DnD-Generator'
+    },
+    {
+        id: 3,
+        title: "Brno table games",
+        description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Duis pulvinar. Ut tempus purus at lorem. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Nunc dapibus tortor vel mi dapibus sollicitudin. Maecenas aliquet accumsan leo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        link: 'https://github.com/Temich21/brno-table-games'
+    },
+    {
+        id: 4,
+        title: "Data Analysis and Visualization in Python",
+        description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Duis pulvinar. Ut tempus purus at lorem. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Nunc dapibus tortor vel mi dapibus sollicitudin. Maecenas aliquet accumsan leo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        link: 'https://github.com/Temich21/Data-Analysis-and-Visualization-in-Python'
+    },
+    {
+        id: 5,
+        title: "Telegram ChatGPT bot",
+        description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Duis pulvinar. Ut tempus purus at lorem. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Nunc dapibus tortor vel mi dapibus sollicitudin. Maecenas aliquet accumsan leo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        link: 'https://github.com/Temich21/tgbot-gpt'
+    },
+    {
+        id: 6,
+        title: "Alien Invasion",
+        description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Duis pulvinar. Ut tempus purus at lorem. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Nunc dapibus tortor vel mi dapibus sollicitudin. Maecenas aliquet accumsan leo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        link: 'https://github.com/Temich21/Alien-invasion'
+    },
+    {
+        id: 7,
+        title: "Coding Test",
+        description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Duis pulvinar. Ut tempus purus at lorem. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Nunc dapibus tortor vel mi dapibus sollicitudin. Maecenas aliquet accumsan leo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        link: 'https://github.com/Temich21/CodingTest'
+    },
 ]
 
 export const Projects = () => {
     const { activePath } = useContext(ActivePathContext)
-    const arrowRef = useRef(null)
+    const arrowRef = useRef<RefObject>(null)
 
     const settings = {
         dots: true,
@@ -61,11 +99,11 @@ export const Projects = () => {
             <h3 className={styles.title}>Projects</h3>
             <Container>
                 <Slider ref={arrowRef} {...settings}>
-                    {projects.map(({ id, title, description }) => (
+                    {projects.map(({ id, title, description, link }) => (
                         <Card key={id}>
                             <h3>{title}</h3>
                             <p>{description}</p>
-                            <p><a href=""><b>Link</b></a></p>
+                            <p><a href={link}><b>Link</b></a></p>
                         </Card>
                     ))}
                 </Slider>
@@ -74,15 +112,15 @@ export const Projects = () => {
                 <FontAwesomeIcon
                     icon={faCircleArrowLeft}
                     className={styles.arrow}
-                    onClick={() => arrowRef.current.slickPrev()}
+                    onClick={() => arrowRef.current?.slickPrev()}
                 />
                 <FontAwesomeIcon
                     icon={faCircleArrowRight}
                     className={styles.arrow}
-                    onClick={() => arrowRef.current.slickNext()}
+                    onClick={() => arrowRef.current?.slickNext()}
                 />
             </div>
-            <span className={`${styles.animate} ${activePath === 'education' ? styles.showAnimate : ''}`} style={{ '--i': 10 }}></span>
+            <span className={`${styles.animate} ${activePath === 'education' ? styles.showAnimate : ''}`} ></span>
         </div>
     )
 }

@@ -5,8 +5,9 @@ import { FontAwesomeIcon } from '../../../node_modules/@fortawesome/react-fontaw
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { useContext, useEffect, useRef, useState } from 'react'
 import { ActivePathContext } from '@/context/ActivePath'
+import { INavigation } from '@/models/INavigation'
 
-const navigation = [
+const navigation: INavigation[] = [
     { id: 1, title: 'Home', path: 'home' },
     { id: 2, title: 'About', path: 'about' },
     { id: 3, title: 'Education', path: 'education' },
@@ -22,16 +23,14 @@ export const NavigationBar: React.FC = () => {
     const headerRef = useRef(null)
 
     useEffect(() => {
-        // window.onscroll = () => {
-
-        // }
-
         const handleHashFragmentAndScroll = () => {
             const hash = window.location.hash.slice(1)
             const matchingSection = navigation.find(({ path }) => path === hash);
             if (matchingSection) {
                 setActiveSection(hash)
-                setActivePath(hash)
+                if (setActivePath) {
+                    setActivePath(hash)
+                }
             }
 
             const currentScrollPos = window.scrollY
@@ -44,7 +43,9 @@ export const NavigationBar: React.FC = () => {
 
                     if (currentScrollPos >= offset && currentScrollPos < offset + height) {
                         setActiveSection(path)
-                        setActivePath(path)
+                        if (setActivePath) {
+                            setActivePath(path)
+                        }
                     }
                 }
             })
@@ -59,27 +60,28 @@ export const NavigationBar: React.FC = () => {
             window.removeEventListener('hashchange', handleHashFragmentAndScroll)
             window.removeEventListener('scroll', handleHashFragmentAndScroll)
         }
-    }, [])
+    }, [setActivePath])
 
-    const handleClick = (path) => () => {
-        const element = document.getElementById(path);
+    const handleClick = (path: string) => () => {
+        const element = document.getElementById(path)
         const offset = 50
-        const scrollToOffset = element.offsetTop - offset;
+        if (element) {
+            const scrollToOffset = element.offsetTop - offset
+            setBurger(false)
 
-        setBurger(false)
-
-        window.scrollTo({
-            top: scrollToOffset,
-            behavior: "smooth",
-        });
+            window.scrollTo({
+                top: scrollToOffset,
+                behavior: "smooth",
+            })
+        }
     }
 
     return (
         <header className={styles.header} ref={headerRef}>
-            <a className={styles.logo}>My portfolio.<span className={styles.animate} style={{ '--i': 1 }}></span></a>
+            <a className={styles.logo}>My portfolio.<span className={styles.animate} ></span></a>
             <div className={styles.menuIcon} onClick={() => setBurger(!burger)}>
                 {burger ? <FontAwesomeIcon icon={faXmark} /> : <FontAwesomeIcon icon={faBars} />}
-                <span className={styles.animate} style={{ '--i': 2 }}></span>
+                <span className={styles.animate}></span>
             </div>
             <nav>
                 <ul className={`${styles.navbar} ${burger ? styles.toogle : ''}`}>
@@ -94,7 +96,7 @@ export const NavigationBar: React.FC = () => {
                         </li>
                     ))}
                     <span className={styles.activeNav}></span>
-                    <span className={styles.animate} style={{ '--i': 2 }}></span>
+                    <span className={styles.animate}></span>
                 </ul>
             </nav>
         </header>

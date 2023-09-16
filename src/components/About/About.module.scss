@@ -22,6 +22,7 @@
 
         .animate {
             @extend %animation;
+            --i: 1;
             transition: 1s ease;
             transition-delay: calc(.3s / var(--i));
             background: $secondBgColor;
@@ -42,13 +43,14 @@
         justify-content: center;
         align-items: center;
 
-        img {
+        .aboutImage {
             width: 90%;
+            height: 90%;
             border-radius: 50%;
             border: .2rem solid $mainColor;
         }
 
-        .cirecleSpin {
+        .circleSpin {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -62,6 +64,19 @@
             border-right: .2rem solid $mainColor;
             animation: aboutSpinner 8s linear infinite;
         }
+
+        .animate {
+            @extend %animation;
+            --i: 2;
+            transition: 1s ease;
+            transition-delay: calc(.3s / var(--i));
+            background: $secondBgColor;
+        }
+
+        .animate.showAnimate {
+            transition-delay: calc(.3s / var(--i));
+            width: 0;
+        }
     }
 
     .aboutContent {
@@ -73,6 +88,7 @@
 
             .animate {
                 @extend %animation;
+                --i: 3;
                 transition: 1s ease;
                 transition-delay: calc(.3s / var(--i));
                 background: $secondBgColor;
@@ -88,9 +104,11 @@
             position: relative;
             font-size: 1.6rem;
             margin: 2rem 3rem;
+            text-align: start;
 
             .animate {
                 @extend %animation;
+                --i: 4;
                 transition: 1s ease;
                 transition-delay: calc(.3s / var(--i));
                 background: $secondBgColor;
@@ -123,8 +141,6 @@
         }
     }
 }
-
-.animate {}
 
 @keyframes aboutSpinner {
     100% {

@@ -8,6 +8,7 @@ import { Button } from '../Button/Button'
 import styles from './Contact.module.scss'
 import { faFaceSmileWink, faFaceSadTear } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '../../../node_modules/@fortawesome/react-fontawesome/index'
+import { IContact } from '@/models/IContact'
 
 export const Contact = () => {
     const [formSubmited, setFormSubmited] = useState(false)
@@ -15,7 +16,7 @@ export const Contact = () => {
     const { activePath } = useContext(ActivePathContext)
     const ref = collection(firestore, 'contacts')
 
-    const submit = (values) => {
+    const submit = (values: IContact) => {
         const data = {
             id: Number(new Date),
             values
@@ -38,7 +39,7 @@ export const Contact = () => {
             email: '',
             text: ''
         },
-        onSubmit: (values) => {
+        onSubmit: (values: IContact) => {
             setFormSubmited(true)
             submit(values)
         },
@@ -59,7 +60,7 @@ export const Contact = () => {
 
     return (
         <section className={styles.contact} id="contact">
-            <h2 className={styles.heading}>Contact <span>Me!</span><span className={`${styles.animate} ${activePath === 'contact' ? styles.showAnimate : ''}`} style={{ '--i': 1 }}></span></h2>
+            <h2 className={styles.heading}>Contact <span>Me!</span><span className={`${styles.animate} ${activePath === 'contact' ? styles.showAnimate : ''}`} ></span></h2>
             <form onSubmit={formik.handleSubmit}>
                 <div className={styles.inputBox}>
                     <div className={styles.inputField}>
@@ -72,7 +73,7 @@ export const Contact = () => {
                             required
                         />
                         <span className={styles.focus}></span>
-                        <span className={`${styles.animate} ${activePath === 'contact' ? styles.showAnimate : ''}`} style={{ '--i': 2 }}></span>
+                        <span className={`${styles.animate} ${activePath === 'contact' ? styles.showAnimate : ''}`} ></span>
                     </div>
                     <div className={styles.inputField}>
                         <input
@@ -84,7 +85,7 @@ export const Contact = () => {
                             required
                         />
                         <span className={styles.focus}></span>
-                        <span className={`${styles.animate} ${activePath === 'contact' ? styles.showAnimate : ''}`} style={{ '--i': 3 }}></span>
+                        <span className={`${styles.animate} ${activePath === 'contact' ? styles.showAnimate : ''}`} ></span>
                     </div>
                 </div>
 
@@ -99,7 +100,7 @@ export const Contact = () => {
                             required
                         />
                         <span className={styles.focus}></span>
-                        <span className={`${styles.animate} ${activePath === 'contact' ? styles.showAnimate : ''}`} style={{ '--i': 4 }}></span>
+                        <span className={`${styles.animate} ${activePath === 'contact' ? styles.showAnimate : ''}`} ></span>
                     </div>
                     <div className={styles.inputField}>
                         <input
@@ -110,27 +111,27 @@ export const Contact = () => {
                             onChange={formik.handleChange}
                             required />
                         <span className={styles.focus}></span>
-                        <span className={`${styles.animate} ${activePath === 'contact' ? styles.showAnimate : ''}`} style={{ '--i': 5 }}></span>
+                        <span className={`${styles.animate} ${activePath === 'contact' ? styles.showAnimate : ''}`} ></span>
                     </div>
                 </div>
 
                 <div className={styles.textareaField}>
                     <textarea
                         name="text"
-                        cols="30"
-                        rows="15"
+                        cols={30}
+                        rows={15}
                         value={formik.values.text}
                         onChange={formik.handleChange}
                         placeholder="Your Message"
                         required
                     ></textarea>
                     <span className={styles.focus}></span>
-                    <span className={`${styles.animate} ${activePath === 'contact' ? styles.showAnimate : ''}`} style={{ '--i': 6 }}></span>
+                    <span className={`${styles.animate} ${activePath === 'contact' ? styles.showAnimate : ''}`} ></span>
                 </div>
 
                 <div className={styles.btnBox}>
                     <Button type="submit" >Submit</Button>
-                    <span className={`${styles.animate} ${activePath === 'contact' ? styles.showAnimate : ''}`} style={{ '--i': 7 }}></span>
+                    <span className={`${styles.animate} ${activePath === 'contact' ? styles.showAnimate : ''}`} ></span>
                 </div>
             </form>
             {formSubmited && successfulSending && <div className={styles.submited}>The form was sent successfully <FontAwesomeIcon icon={faFaceSmileWink} bounce /></div>}

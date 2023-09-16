@@ -18,10 +18,6 @@ export const ActivePathContext = createContext<ActiveContextType>(defaultState)
 export const ActivePathProvider = ({ children }: props) => {
     const [activePath, setActivePath] = useState<string>(defaultState.activePath)
 
-    // function toggleActivePath(path: string): void {
-    //     setActivePath(path)
-    // }
-
     return (
         <ActivePathContext.Provider value={{ activePath, setActivePath }}>
             {children}
