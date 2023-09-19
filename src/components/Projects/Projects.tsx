@@ -50,7 +50,7 @@ export const Projects = () => {
     }
 
     return (
-        <div className={styles.projects}>
+        <div className={styles.projects} >
             <h3 className={styles.title}>Projects</h3>
             <Container>
                 <Slider ref={arrowRef} {...settings}>
