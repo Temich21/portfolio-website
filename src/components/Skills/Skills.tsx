@@ -2,17 +2,10 @@ import { ActivePathContext } from '@/context/ActivePath'
 import { useContext } from 'react'
 import styles from './Skills.module.scss'
 import { FontAwesomeIcon } from '../../../node_modules/@fortawesome/react-fontawesome/index'
-import { faHtml5, faCss3Alt, faSquareJs, faPython, faReact, faNode } from '@fortawesome/free-brands-svg-icons'
-import { ISkills } from '@/models/ISkills'
-
-const skills: ISkills[] = [
-    { id: 1, title: "HTML", icon: faHtml5, description: 'Proficient in using HTML to structure web content with semantic tags, ensuring accessibility and compatibility across various browsers. Skilled in creating well-organized, SEO-friendly web pages.' },
-    { id: 2, title: "CSS / SASS", icon: faCss3Alt, description: 'Experienced in styling web applications with CSS, including responsive design techniques. Proficient in SASS to streamline and maintain complex stylesheets, ensuring consistency and ease of maintenance.' },
-    { id: 3, title: "JavaScript / Typescript", icon: faSquareJs, description: 'Adept at utilizing JavaScript to create dynamic and interactive web experiences. Proficient in TypeScript, enhancing code quality and maintainability by adding static typing to JavaScript projects. Skilled in working with modern JavaScript frameworks and libraries.' },
-    { id: 4, title: "Python", icon: faPython, description: 'Proficient in Python, a versatile programming language. Skilled in leveraging Python for a variety of applications, including data analysis using Pandas, web development with Django, and game development using PyGame. Capable of implementing complex solutions across multiple domains, from data manipulation to creating robust web applications and engaging 2D games.' },
-    { id: 5, title: "React / Next.js", icon: faReact, description: 'Experienced in building web applications with React, a powerful JavaScript library for creating user interfaces. Familiar with Next.js, a framework that enhances React applications with server-side rendering, SEO optimization, and routing capabilities.' },
-    { id: 6, title: "Node JS", icon: faNode, description: 'Competent in server-side development using Node.js, enabling the creation of scalable, efficient backend applications and APIs. Proficient in utilizing npm packages and building server-side logic for web projects.' },
-]
+import { skills } from '@/costants/skills'
+import Image from 'next/image'
+import foto from '../../pictures/jestjsIcon.png'
+import { faGit } from '@fortawesome/free-brands-svg-icons'
 
 export const Skills: React.FC = () => {
     const { activePath } = useContext(ActivePathContext)
@@ -30,6 +23,28 @@ export const Skills: React.FC = () => {
                         <span className={`${styles.animate} ${activePath === 'skills' ? styles.showAnimate : ''}`} ></span>
                     </div>
                 ))}
+                <div className={styles.skillsRow}>
+                    <div className={`${styles.skill} ${activePath === 'skills' ? styles.showAnimate : ''}`} >
+                        <h3>Git</h3>
+                        <div className={styles.iconBox} >
+                            <FontAwesomeIcon className={styles.icon} icon={faGit} />
+                        </div>
+                        <p>Adept in using Git, a distributed version control system, to manage code repositories efficiently. Proficient in version control practices, including branching, merging, and resolving conflicts. Skilled in collaborating with teams on code projects, utilizing Git to track changes, maintain code history, and ensure codebase integrity.</p>
+                        <span className={`${styles.animate} ${activePath === 'skills' ? styles.showAnimate : ''}`} ></span>
+                    </div>
+                    <div className={`${styles.skill} ${activePath === 'skills' ? styles.showAnimate : ''}`}>
+                        <h3>Jest.js</h3>
+                        <div className={styles.iconBox} >
+                            <Image
+                                src={foto}
+                                className={styles.jestImage}
+                                alt="Jest.js icon"
+                            />
+                        </div>
+                        <p>Proficient in testing React applications using Jest, a popular JavaScript testing framework. Experienced in writing unit and integration tests to ensure code reliability and maintainability. Skilled in using React Testing Library to perform component-level testing, focusing on user interactions and behaviors. These testing skills contribute to the delivery of high-quality, bug-free applications.</p>
+                        <span className={`${styles.animate} ${activePath === 'skills' ? styles.showAnimate : ''}`} ></span>
+                    </div>
+                </div>
             </div>
         </section>
     )
